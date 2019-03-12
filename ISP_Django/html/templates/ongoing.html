@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load widget_tweaks %}
+    <form method="post" id="ongoing" novalidate>{% csrf_token %}
+        <input type="hidden" value="ongoing" name="form_type" />
+        {{ ongoingform }}
+        <input type="submit" value="Add Event">
+    </form>
+    <form method="post" id="past" novalidate>{% csrf_token %}
+        <input type="hidden" value="past" name="form_type" />
+        {% for event in events %}
+            {% if not event.completed %}
+                <!-- Add Checkbox to sign up for event -->
+                <input type="checkbox" name = "checks" value="{{event.id}}" onchange="document.getElementById('past').submit()"/>
+                {{event.name}}
+            {% endif %}
+        {% endfor %}
+    </form>
+    
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load widget_tweaks %}
+    {% for event in events %}
+        {% if event.completed %}
+            {{event.name}}
+        {% endif %}
+    {% endfor %}
+    
+
+{% endblock %}

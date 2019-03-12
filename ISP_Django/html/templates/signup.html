@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load widget_tweaks %}
+
+    <form method="post" id="signup" novalidate>{% csrf_token %}
+        <input type="hidden" value="signup" name="form_type" />
+        {{ signupform }}
+        <input type="submit" value="Sign Up">
+    </form>
+    <form method="post" id="login" novalidate>{% csrf_token %}
+        <input type="hidden" value="login" name="form_type" />
+        {{ loginform }}
+        <input type="submit" value="Log In">
+    </form>
+
+{% endblock %}
